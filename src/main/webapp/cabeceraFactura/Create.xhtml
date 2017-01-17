@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CabeceraFacturaCreateDlg" widgetVar="CabeceraFacturaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCabeceraFacturaTitle}">
+            <h:form id="CabeceraFacturaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cabeceraFacturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_idcabeceraFactura}" for="idcabeceraFactura" />
+                        <p:inputText id="idcabeceraFactura" value="#{cabeceraFacturaController.selected.idcabeceraFactura}" title="#{bundle.CreateCabeceraFacturaTitle_idcabeceraFactura}" required="true" requiredMessage="#{bundle.CreateCabeceraFacturaRequiredMessage_idcabeceraFactura}"/>
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_numeroFactura}" for="numeroFactura" />
+                        <p:inputText id="numeroFactura" value="#{cabeceraFacturaController.selected.numeroFactura}" title="#{bundle.CreateCabeceraFacturaTitle_numeroFactura}" />
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_fecha}" for="fecha" />
+                        <p:calendar id="fecha" pattern="MM/dd/yyyy" value="#{cabeceraFacturaController.selected.fecha}" title="#{bundle.EditCabeceraFacturaTitle_fecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_subtotal}" for="subtotal" />
+                        <p:inputText id="subtotal" value="#{cabeceraFacturaController.selected.subtotal}" title="#{bundle.CreateCabeceraFacturaTitle_subtotal}" />
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_total}" for="total" />
+                        <p:inputText id="total" value="#{cabeceraFacturaController.selected.total}" title="#{bundle.CreateCabeceraFacturaTitle_total}" />
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_impuestoIdimpuesto}" for="impuestoIdimpuesto" />
+                        <p:selectOneMenu id="impuestoIdimpuesto" value="#{cabeceraFacturaController.selected.impuestoIdimpuesto}" >
+                            <f:selectItems value="#{impuestoController.itemsAvailableSelectOne}"
+                                           var="impuestoIdimpuestoItem"
+                                           itemValue="#{impuestoIdimpuestoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_descuentoIddescuento}" for="descuentoIddescuento" />
+                        <p:selectOneMenu id="descuentoIddescuento" value="#{cabeceraFacturaController.selected.descuentoIddescuento}" >
+                            <f:selectItems value="#{descuentoController.itemsAvailableSelectOne}"
+                                           var="descuentoIddescuentoItem"
+                                           itemValue="#{descuentoIddescuentoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateCabeceraFacturaLabel_cargoserviciosIdcargoservicios}" for="cargoserviciosIdcargoservicios" />
+                        <p:selectOneMenu id="cargoserviciosIdcargoservicios" value="#{cabeceraFacturaController.selected.cargoserviciosIdcargoservicios}" >
+                            <f:selectItems value="#{cargoserviciosController.itemsAvailableSelectOne}"
+                                           var="cargoserviciosIdcargoserviciosItem"
+                                           itemValue="#{cargoserviciosIdcargoserviciosItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cabeceraFacturaController.create}" value="#{bundle.Save}" update="display,:CabeceraFacturaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CabeceraFacturaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CabeceraFacturaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

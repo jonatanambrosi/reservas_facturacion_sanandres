@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReservacionEditDlg" widgetVar="ReservacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditReservacionTitle}">
+            <h:form id="ReservacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reservacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_idreservacion}" for="idreservacion" />
+                        <p:inputText id="idreservacion" value="#{reservacionController.selected.idreservacion}" title="#{bundle.EditReservacionTitle_idreservacion}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_idreservacion}"/>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_fechaReserva}" for="fechaReserva" />
+                        <p:calendar id="fechaReserva" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaReserva}" title="#{bundle.EditReservacionTitle_fechaReserva}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_fechaEntrada}" for="fechaEntrada" />
+                        <p:calendar id="fechaEntrada" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaEntrada}" title="#{bundle.EditReservacionTitle_fechaEntrada}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_fechaSalida}" for="fechaSalida" />
+                        <p:calendar id="fechaSalida" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaSalida}" title="#{bundle.EditReservacionTitle_fechaSalida}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{reservacionController.selected.valor}" title="#{bundle.EditReservacionTitle_valor}" />
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_observacion}" for="observacion" />
+                        <p:inputText id="observacion" value="#{reservacionController.selected.observacion}" title="#{bundle.EditReservacionTitle_observacion}" />
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_numeroHuespedes}" for="numeroHuespedes" />
+                        <p:inputText id="numeroHuespedes" value="#{reservacionController.selected.numeroHuespedes}" title="#{bundle.EditReservacionTitle_numeroHuespedes}" />
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_codigoreserva}" for="codigoreserva" />
+                        <p:inputText id="codigoreserva" value="#{reservacionController.selected.codigoreserva}" title="#{bundle.EditReservacionTitle_codigoreserva}" />
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_usuarioIdusuario}" for="usuarioIdusuario" />
+                        <p:selectOneMenu id="usuarioIdusuario" value="#{reservacionController.selected.usuarioIdusuario}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_usuarioIdusuario}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="usuarioIdusuarioItem"
+                                           itemValue="#{usuarioIdusuarioItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_parqueaderoIdparqueadero}" for="parqueaderoIdparqueadero" />
+                        <p:selectOneMenu id="parqueaderoIdparqueadero" value="#{reservacionController.selected.parqueaderoIdparqueadero}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_parqueaderoIdparqueadero}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{parqueaderoController.itemsAvailableSelectOne}"
+                                           var="parqueaderoIdparqueaderoItem"
+                                           itemValue="#{parqueaderoIdparqueaderoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_formadepagoIdformadepago}" for="formadepagoIdformadepago" />
+                        <p:selectOneMenu id="formadepagoIdformadepago" value="#{reservacionController.selected.formadepagoIdformadepago}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_formadepagoIdformadepago}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{formadepagoController.itemsAvailableSelectOne}"
+                                           var="formadepagoIdformadepagoItem"
+                                           itemValue="#{formadepagoIdformadepagoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_estadoreservacionIdestadoreservacion}" for="estadoreservacionIdestadoreservacion" />
+                        <p:selectOneMenu id="estadoreservacionIdestadoreservacion" value="#{reservacionController.selected.estadoreservacionIdestadoreservacion}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_estadoreservacionIdestadoreservacion}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{estadoreservacionController.itemsAvailableSelectOne}"
+                                           var="estadoreservacionIdestadoreservacionItem"
+                                           itemValue="#{estadoreservacionIdestadoreservacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_empresaIdempresa}" for="empresaIdempresa" />
+                        <p:selectOneMenu id="empresaIdempresa" value="#{reservacionController.selected.empresaIdempresa}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_empresaIdempresa}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{empresaController.itemsAvailableSelectOne}"
+                                           var="empresaIdempresaItem"
+                                           itemValue="#{empresaIdempresaItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditReservacionLabel_clienteIdcliente}" for="clienteIdcliente" />
+                        <p:selectOneMenu id="clienteIdcliente" value="#{reservacionController.selected.clienteIdcliente}" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_clienteIdcliente}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"
+                                           var="clienteIdclienteItem"
+                                           itemValue="#{clienteIdclienteItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reservacionController.update}" value="#{bundle.Save}" update="display,:ReservacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReservacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ReservacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

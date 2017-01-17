@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpresaCreateDlg" widgetVar="EmpresaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateEmpresaTitle}">
+            <h:form id="EmpresaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{empresaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_idempresa}" for="idempresa" />
+                        <p:inputText id="idempresa" value="#{empresaController.selected.idempresa}" title="#{bundle.CreateEmpresaTitle_idempresa}" required="true" requiredMessage="#{bundle.CreateEmpresaRequiredMessage_idempresa}"/>
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{empresaController.selected.nombre}" title="#{bundle.CreateEmpresaTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_ruc}" for="ruc" />
+                        <p:inputText id="ruc" value="#{empresaController.selected.ruc}" title="#{bundle.CreateEmpresaTitle_ruc}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{empresaController.selected.direccion}" title="#{bundle.CreateEmpresaTitle_direccion}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{empresaController.selected.telefono}" title="#{bundle.CreateEmpresaTitle_telefono}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_ciudad}" for="ciudad" />
+                        <p:inputText id="ciudad" value="#{empresaController.selected.ciudad}" title="#{bundle.CreateEmpresaTitle_ciudad}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{empresaController.selected.email}" title="#{bundle.CreateEmpresaTitle_email}" />
+                        <p:outputLabel value="#{bundle.CreateEmpresaLabel_paisIdpais}" for="paisIdpais" />
+                        <p:selectOneMenu id="paisIdpais" value="#{empresaController.selected.paisIdpais}" >
+                            <f:selectItems value="#{paisController.itemsAvailableSelectOne}"
+                                           var="paisIdpaisItem"
+                                           itemValue="#{paisIdpaisItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empresaController.create}" value="#{bundle.Save}" update="display,:EmpresaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EmpresaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EmpresaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DescuentoViewDlg" widgetVar="DescuentoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDescuentoTitle}">
+            <h:form id="DescuentoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{descuentoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDescuentoLabel_iddescuento}"/>
+                        <h:outputText value="#{descuentoController.selected.iddescuento}" title="#{bundle.ViewDescuentoTitle_iddescuento}"/>
+                        <h:outputText value="#{bundle.ViewDescuentoLabel_nombre}"/>
+                        <h:outputText value="#{descuentoController.selected.nombre}" title="#{bundle.ViewDescuentoTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewDescuentoLabel_porcentaje}"/>
+                        <h:outputText value="#{descuentoController.selected.porcentaje}" title="#{bundle.ViewDescuentoTitle_porcentaje}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DescuentoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

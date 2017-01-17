@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HabitacionViewDlg" widgetVar="HabitacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewHabitacionTitle}">
+            <h:form id="HabitacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{habitacionController.selected != null}">
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_idhabitacion}"/>
+                        <h:outputText value="#{habitacionController.selected.idhabitacion}" title="#{bundle.ViewHabitacionTitle_idhabitacion}"/>
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_numero}"/>
+                        <h:outputText value="#{habitacionController.selected.numero}" title="#{bundle.ViewHabitacionTitle_numero}"/>
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_descripcion}"/>
+                        <h:outputText value="#{habitacionController.selected.descripcion}" title="#{bundle.ViewHabitacionTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_estado}"/>
+                        <h:outputText value="#{habitacionController.selected.estado}" title="#{bundle.ViewHabitacionTitle_estado}"/>
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_precio}"/>
+                        <h:outputText value="#{habitacionController.selected.precio}" title="#{bundle.ViewHabitacionTitle_precio}"/>
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_tipoHabitacionIdtipoHabitacion}"/>
+                        <h:outputText value="#{habitacionController.selected.tipoHabitacionIdtipoHabitacion}" title="#{bundle.ViewHabitacionTitle_tipoHabitacionIdtipoHabitacion}"/>
+                        <h:outputText value="#{bundle.ViewHabitacionLabel_estadoHabitacionIdestadoHabitacion}"/>
+                        <h:outputText value="#{habitacionController.selected.estadoHabitacionIdestadoHabitacion}" title="#{bundle.ViewHabitacionTitle_estadoHabitacionIdestadoHabitacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="HabitacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CabeceraFacturaViewDlg" widgetVar="CabeceraFacturaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCabeceraFacturaTitle}">
+            <h:form id="CabeceraFacturaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cabeceraFacturaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_idcabeceraFactura}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.idcabeceraFactura}" title="#{bundle.ViewCabeceraFacturaTitle_idcabeceraFactura}"/>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_numeroFactura}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.numeroFactura}" title="#{bundle.ViewCabeceraFacturaTitle_numeroFactura}"/>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_fecha}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.fecha}" title="#{bundle.ViewCabeceraFacturaTitle_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_subtotal}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.subtotal}" title="#{bundle.ViewCabeceraFacturaTitle_subtotal}"/>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_total}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.total}" title="#{bundle.ViewCabeceraFacturaTitle_total}"/>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_impuestoIdimpuesto}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.impuestoIdimpuesto}" title="#{bundle.ViewCabeceraFacturaTitle_impuestoIdimpuesto}"/>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_descuentoIddescuento}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.descuentoIddescuento}" title="#{bundle.ViewCabeceraFacturaTitle_descuentoIddescuento}"/>
+                        <h:outputText value="#{bundle.ViewCabeceraFacturaLabel_cargoserviciosIdcargoservicios}"/>
+                        <h:outputText value="#{cabeceraFacturaController.selected.cargoserviciosIdcargoservicios}" title="#{bundle.ViewCabeceraFacturaTitle_cargoserviciosIdcargoservicios}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CabeceraFacturaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

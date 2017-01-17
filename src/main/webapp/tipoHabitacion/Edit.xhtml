@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TipoHabitacionEditDlg" widgetVar="TipoHabitacionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTipoHabitacionTitle}">
+            <h:form id="TipoHabitacionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tipoHabitacionController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTipoHabitacionLabel_idtipoHabitacion}" for="idtipoHabitacion" />
+                        <p:inputText id="idtipoHabitacion" value="#{tipoHabitacionController.selected.idtipoHabitacion}" title="#{bundle.EditTipoHabitacionTitle_idtipoHabitacion}" required="true" requiredMessage="#{bundle.EditTipoHabitacionRequiredMessage_idtipoHabitacion}"/>
+                        <p:outputLabel value="#{bundle.EditTipoHabitacionLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{tipoHabitacionController.selected.descripcion}" title="#{bundle.EditTipoHabitacionTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.EditTipoHabitacionLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{tipoHabitacionController.selected.tipo}" title="#{bundle.EditTipoHabitacionTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditTipoHabitacionLabel_minimo}" for="minimo" />
+                        <p:inputText id="minimo" value="#{tipoHabitacionController.selected.minimo}" title="#{bundle.EditTipoHabitacionTitle_minimo}" />
+                        <p:outputLabel value="#{bundle.EditTipoHabitacionLabel_maximo}" for="maximo" />
+                        <p:inputText id="maximo" value="#{tipoHabitacionController.selected.maximo}" title="#{bundle.EditTipoHabitacionTitle_maximo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tipoHabitacionController.update}" value="#{bundle.Save}" update="display,:TipoHabitacionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TipoHabitacionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TipoHabitacionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParqueaderoCreateDlg" widgetVar="ParqueaderoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateParqueaderoTitle}">
+            <h:form id="ParqueaderoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{parqueaderoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateParqueaderoLabel_idparqueadero}" for="idparqueadero" />
+                        <p:inputText id="idparqueadero" value="#{parqueaderoController.selected.idparqueadero}" title="#{bundle.CreateParqueaderoTitle_idparqueadero}" required="true" requiredMessage="#{bundle.CreateParqueaderoRequiredMessage_idparqueadero}"/>
+                        <p:outputLabel value="#{bundle.CreateParqueaderoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{parqueaderoController.selected.nombre}" title="#{bundle.CreateParqueaderoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateParqueaderoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.CreateParqueaderoLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{parqueaderoController.selected.descripcion}" title="#{bundle.CreateParqueaderoTitle_descripcion}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{parqueaderoController.create}" value="#{bundle.Save}" update="display,:ParqueaderoListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParqueaderoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParqueaderoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

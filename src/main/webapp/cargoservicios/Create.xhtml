@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CargoserviciosCreateDlg" widgetVar="CargoserviciosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCargoserviciosTitle}">
+            <h:form id="CargoserviciosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{cargoserviciosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCargoserviciosLabel_idcargoservicios}" for="idcargoservicios" />
+                        <p:inputText id="idcargoservicios" value="#{cargoserviciosController.selected.idcargoservicios}" title="#{bundle.CreateCargoserviciosTitle_idcargoservicios}" required="true" requiredMessage="#{bundle.CreateCargoserviciosRequiredMessage_idcargoservicios}"/>
+                        <p:outputLabel value="#{bundle.CreateCargoserviciosLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{cargoserviciosController.selected.nombre}" title="#{bundle.CreateCargoserviciosTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.CreateCargoserviciosLabel_porcentaje}" for="porcentaje" />
+                        <p:inputText id="porcentaje" value="#{cargoserviciosController.selected.porcentaje}" title="#{bundle.CreateCargoserviciosTitle_porcentaje}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cargoserviciosController.create}" value="#{bundle.Save}" update="display,:CargoserviciosListForm:datalist,:growl" oncomplete="handleSubmit(args,'CargoserviciosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CargoserviciosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

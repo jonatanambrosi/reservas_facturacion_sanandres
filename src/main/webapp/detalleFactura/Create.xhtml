@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DetalleFacturaCreateDlg" widgetVar="DetalleFacturaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDetalleFacturaTitle}">
+            <h:form id="DetalleFacturaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{detalleFacturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDetalleFacturaLabel_iddetalleFactura}" for="iddetalleFactura" />
+                        <p:inputText id="iddetalleFactura" value="#{detalleFacturaController.selected.iddetalleFactura}" title="#{bundle.CreateDetalleFacturaTitle_iddetalleFactura}" required="true" requiredMessage="#{bundle.CreateDetalleFacturaRequiredMessage_iddetalleFactura}"/>
+                        <p:outputLabel value="#{bundle.CreateDetalleFacturaLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{detalleFacturaController.selected.cantidad}" title="#{bundle.CreateDetalleFacturaTitle_cantidad}" />
+                        <p:outputLabel value="#{bundle.CreateDetalleFacturaLabel_serviciosIdservicios}" for="serviciosIdservicios" />
+                        <p:selectOneMenu id="serviciosIdservicios" value="#{detalleFacturaController.selected.serviciosIdservicios}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_serviciosIdservicios}">
+                            <f:selectItems value="#{serviciosController.itemsAvailableSelectOne}"
+                                           var="serviciosIdserviciosItem"
+                                           itemValue="#{serviciosIdserviciosItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleFacturaLabel_reservacionIdreservacion}" for="reservacionIdreservacion" />
+                        <p:selectOneMenu id="reservacionIdreservacion" value="#{detalleFacturaController.selected.reservacionIdreservacion}" required="true" requiredMessage="#{bundle.EditDetalleFacturaRequiredMessage_reservacionIdreservacion}">
+                            <f:selectItems value="#{reservacionController.itemsAvailableSelectOne}"
+                                           var="reservacionIdreservacionItem"
+                                           itemValue="#{reservacionIdreservacionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDetalleFacturaLabel_cabeceraFacturaIdcabeceraFactura}" for="cabeceraFacturaIdcabeceraFactura" />
+                        <p:selectOneMenu id="cabeceraFacturaIdcabeceraFactura" value="#{detalleFacturaController.selected.cabeceraFacturaIdcabeceraFactura}" >
+                            <f:selectItems value="#{cabeceraFacturaController.itemsAvailableSelectOne}"
+                                           var="cabeceraFacturaIdcabeceraFacturaItem"
+                                           itemValue="#{cabeceraFacturaIdcabeceraFacturaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{detalleFacturaController.create}" value="#{bundle.Save}" update="display,:DetalleFacturaListForm:datalist,:growl" oncomplete="handleSubmit(args,'DetalleFacturaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DetalleFacturaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
