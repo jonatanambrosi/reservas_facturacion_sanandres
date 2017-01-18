@@ -12,8 +12,6 @@
             <h:form id="DescuentoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{descuentoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateDescuentoLabel_iddescuento}" for="iddescuento" />
-                        <p:inputText id="iddescuento" value="#{descuentoController.selected.iddescuento}" title="#{bundle.CreateDescuentoTitle_iddescuento}" required="true" requiredMessage="#{bundle.CreateDescuentoRequiredMessage_iddescuento}"/>
                         <p:outputLabel value="#{bundle.CreateDescuentoLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{descuentoController.selected.nombre}" title="#{bundle.CreateDescuentoTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateDescuentoLabel_porcentaje}" for="porcentaje" />

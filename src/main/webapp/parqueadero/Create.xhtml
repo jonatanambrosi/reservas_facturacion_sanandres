@@ -12,8 +12,6 @@
             <h:form id="ParqueaderoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{parqueaderoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateParqueaderoLabel_idparqueadero}" for="idparqueadero" />
-                        <p:inputText id="idparqueadero" value="#{parqueaderoController.selected.idparqueadero}" title="#{bundle.CreateParqueaderoTitle_idparqueadero}" required="true" requiredMessage="#{bundle.CreateParqueaderoRequiredMessage_idparqueadero}"/>
                         <p:outputLabel value="#{bundle.CreateParqueaderoLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{parqueaderoController.selected.nombre}" title="#{bundle.CreateParqueaderoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateParqueaderoRequiredMessage_nombre}"/>
                         <p:outputLabel value="#{bundle.CreateParqueaderoLabel_descripcion}" for="descripcion" />

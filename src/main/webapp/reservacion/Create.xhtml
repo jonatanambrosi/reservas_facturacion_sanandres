@@ -11,19 +11,57 @@
         <p:dialog id="ReservacionCreateDlg" widgetVar="ReservacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReservacionTitle}">
             <h:form id="ReservacionCreateForm">
                 <h:panelGroup id="display">
-                    <p:panelGrid columns="2" rendered="#{reservacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateReservacionLabel_idreservacion}" for="idreservacion" />
-                        <p:inputText id="idreservacion" value="#{reservacionController.selected.idreservacion}" title="#{bundle.CreateReservacionTitle_idreservacion}" required="true" requiredMessage="#{bundle.CreateReservacionRequiredMessage_idreservacion}"/>
-                        <p:outputLabel value="#{bundle.CreateReservacionLabel_fechaReserva}" for="fechaReserva" />
-                        <p:calendar id="fechaReserva" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaReserva}" title="#{bundle.EditReservacionTitle_fechaReserva}"  showOn="button"/>
+                    <p:panelGrid columns="4" rendered="#{reservacionController.selected != null}">
                         <p:outputLabel value="#{bundle.CreateReservacionLabel_fechaEntrada}" for="fechaEntrada" />
                         <p:calendar id="fechaEntrada" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaEntrada}" title="#{bundle.EditReservacionTitle_fechaEntrada}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateReservacionLabel_fechaSalida}" for="fechaSalida" />
                         <p:calendar id="fechaSalida" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaSalida}" title="#{bundle.EditReservacionTitle_fechaSalida}"  showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateReservacionLabel_valor}" for="valor" />
-                        <p:inputText id="valor" value="#{reservacionController.selected.valor}" title="#{bundle.CreateReservacionTitle_valor}" />
-                        <p:outputLabel value="#{bundle.CreateReservacionLabel_observacion}" for="observacion" />
-                        <p:inputText id="observacion" value="#{reservacionController.selected.observacion}" title="#{bundle.CreateReservacionTitle_observacion}" />
+                    </p:panelGrid>
+                    <p:panelGrid columns="4">
+                        <f:facet name="header">
+                            <h:outputText value="HABITACIONES"/>
+                        </f:facet>
+                        <p:outputLabel value="Habitación" for="fechaReserva" />
+                        <p:selectOneMenu id="habitacionidhabitacion" required="true" requiredMessage="#{bundle.EditReservacionRequiredMessage_formadepagoIdformadepago}">
+                            <f:selectItems value="#{habitacionController.itemsAvailableSelectOne}"
+                                           var="habitacionidhabitacionItem"
+                                           itemValue="#{habitacionidhabitacionItem}"
+                                           itemLabel="#{habitacionidhabitacionItem.numero}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Precio Acordado" for="fechaReserva" />
+                        <p:outputLabel value="Precio Acordado" for="fechaReserva" />
+                    </p:panelGrid>    
+                    <h:panelGrid columns="6">
+                            <f:facet name="header">
+                                <h:outputText value="CLIENTE"/>
+
+                                <p:separator style="width: 1050px"/>
+                            </f:facet>
+                            <p:outputLabel value="Identificacion" for="identificacion" />
+                            <p:inputText id="identificacion" 
+                                         value="#{reservacionController.selected.clienteIdcliente.identificacion}" 
+                                         title="#{bundle.CreateClienteTitle_identificacion}" >
+                            </p:inputText>
+                            <p:outputLabel value="Nombre" for="nombre" />
+                            <p:inputText id="nombre" 
+                                         readonly="true"
+                                         value="#{reservacionController.selected.clienteIdcliente.nombres} #{reservacionController.selected.clienteIdcliente.apellidos}" 
+                                         title="#{bundle.CreateClienteTitle_nombre}" />
+                            <p:outputLabel value="Telefono" for="telefono" />
+                            <p:inputText id="telefono" 
+                                         readonly="true"
+                                         value="#{reservacionController.selected.clienteIdcliente.telefono}" 
+                                         title="#{bundle.CreateClienteTitle_telefono}" />
+                            <p:outputLabel value="Direccion" for="direccion" />
+                            <p:inputText id="direccion" 
+                                         readonly="true"
+                                         value="#{reservacionController.selected.clienteIdcliente.email}" 
+                                         title="#{bundle.CreateClienteTitle_emial}" />
+                    </h:panelGrid>
+                    <p:panelGrid columns="2" rendered="#{reservacionController.selected != null}">
+                        
+                        <p:outputLabel value="#{bundle.CreateReservacionLabel_fechaReserva}" for="fechaReserva" />
+                        <p:calendar id="fechaReserva" pattern="MM/dd/yyyy" value="#{reservacionController.selected.fechaReserva}" title="#{bundle.EditReservacionTitle_fechaReserva}"  showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateReservacionLabel_numeroHuespedes}" for="numeroHuespedes" />
                         <p:inputText id="numeroHuespedes" value="#{reservacionController.selected.numeroHuespedes}" title="#{bundle.CreateReservacionTitle_numeroHuespedes}" />
                         <p:outputLabel value="#{bundle.CreateReservacionLabel_codigoreserva}" for="codigoreserva" />
@@ -64,6 +102,10 @@
                                            var="clienteIdclienteItem"
                                            itemValue="#{clienteIdclienteItem}"/>
                         </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateReservacionLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{reservacionController.selected.valor}" title="#{bundle.CreateReservacionTitle_valor}" />
+                        <p:outputLabel value="#{bundle.CreateReservacionLabel_observacion}" for="observacion" />
+                        <p:inputTextarea id="observacion" value="#{reservacionController.selected.observacion}" title="#{bundle.CreateReservacionTitle_observacion}" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{reservacionController.create}" value="#{bundle.Save}" update="display,:ReservacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ReservacionCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ReservacionCreateDialog.hide()"/>

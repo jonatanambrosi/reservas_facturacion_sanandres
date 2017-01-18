@@ -12,8 +12,6 @@
             <h:form id="TipoHabitacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tipoHabitacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateTipoHabitacionLabel_idtipoHabitacion}" for="idtipoHabitacion" />
-                        <p:inputText id="idtipoHabitacion" value="#{tipoHabitacionController.selected.idtipoHabitacion}" title="#{bundle.CreateTipoHabitacionTitle_idtipoHabitacion}" required="true" requiredMessage="#{bundle.CreateTipoHabitacionRequiredMessage_idtipoHabitacion}"/>
                         <p:outputLabel value="#{bundle.CreateTipoHabitacionLabel_descripcion}" for="descripcion" />
                         <p:inputText id="descripcion" value="#{tipoHabitacionController.selected.descripcion}" title="#{bundle.CreateTipoHabitacionTitle_descripcion}" />
                         <p:outputLabel value="#{bundle.CreateTipoHabitacionLabel_tipo}" for="tipo" />

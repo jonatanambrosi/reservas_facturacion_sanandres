@@ -12,8 +12,6 @@
             <h:form id="CargoserviciosCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{cargoserviciosController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateCargoserviciosLabel_idcargoservicios}" for="idcargoservicios" />
-                        <p:inputText id="idcargoservicios" value="#{cargoserviciosController.selected.idcargoservicios}" title="#{bundle.CreateCargoserviciosTitle_idcargoservicios}" required="true" requiredMessage="#{bundle.CreateCargoserviciosRequiredMessage_idcargoservicios}"/>
                         <p:outputLabel value="#{bundle.CreateCargoserviciosLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{cargoserviciosController.selected.nombre}" title="#{bundle.CreateCargoserviciosTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateCargoserviciosLabel_porcentaje}" for="porcentaje" />

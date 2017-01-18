@@ -12,8 +12,6 @@
             <h:form id="EstadoreservacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoreservacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEstadoreservacionLabel_idestadoreservacion}" for="idestadoreservacion" />
-                        <p:inputText id="idestadoreservacion" value="#{estadoreservacionController.selected.idestadoreservacion}" title="#{bundle.CreateEstadoreservacionTitle_idestadoreservacion}" required="true" requiredMessage="#{bundle.CreateEstadoreservacionRequiredMessage_idestadoreservacion}"/>
                         <p:outputLabel value="#{bundle.CreateEstadoreservacionLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{estadoreservacionController.selected.nombre}" title="#{bundle.CreateEstadoreservacionTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateEstadoreservacionLabel_descripcion}" for="descripcion" />

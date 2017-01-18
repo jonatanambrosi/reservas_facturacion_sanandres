@@ -12,8 +12,6 @@
             <h:form id="ImpuestoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{impuestoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateImpuestoLabel_idimpuesto}" for="idimpuesto" />
-                        <p:inputText id="idimpuesto" value="#{impuestoController.selected.idimpuesto}" title="#{bundle.CreateImpuestoTitle_idimpuesto}" required="true" requiredMessage="#{bundle.CreateImpuestoRequiredMessage_idimpuesto}"/>
                         <p:outputLabel value="#{bundle.CreateImpuestoLabel_nombre}" for="nombre" />
                         <p:inputText id="nombre" value="#{impuestoController.selected.nombre}" title="#{bundle.CreateImpuestoTitle_nombre}" />
                         <p:outputLabel value="#{bundle.CreateImpuestoLabel_porcentaje}" for="porcentaje" />

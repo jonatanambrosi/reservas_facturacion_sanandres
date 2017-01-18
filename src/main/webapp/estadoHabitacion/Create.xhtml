@@ -12,8 +12,6 @@
             <h:form id="EstadoHabitacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoHabitacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEstadoHabitacionLabel_idestadoHabitacion}" for="idestadoHabitacion" />
-                        <p:inputText id="idestadoHabitacion" value="#{estadoHabitacionController.selected.idestadoHabitacion}" title="#{bundle.CreateEstadoHabitacionTitle_idestadoHabitacion}" required="true" requiredMessage="#{bundle.CreateEstadoHabitacionRequiredMessage_idestadoHabitacion}"/>
                         <p:outputLabel value="#{bundle.CreateEstadoHabitacionLabel_estado}" for="estado" />
                         <p:inputText id="estado" value="#{estadoHabitacionController.selected.estado}" title="#{bundle.CreateEstadoHabitacionTitle_estado}" />
                         <p:outputLabel value="#{bundle.CreateEstadoHabitacionLabel_descripcion}" for="descripcion" />

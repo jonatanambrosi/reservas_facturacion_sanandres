@@ -12,8 +12,6 @@
             <h:form id="HabitacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{habitacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateHabitacionLabel_idhabitacion}" for="idhabitacion" />
-                        <p:inputText id="idhabitacion" value="#{habitacionController.selected.idhabitacion}" title="#{bundle.CreateHabitacionTitle_idhabitacion}" required="true" requiredMessage="#{bundle.CreateHabitacionRequiredMessage_idhabitacion}"/>
                         <p:outputLabel value="#{bundle.CreateHabitacionLabel_numero}" for="numero" />
                         <p:inputText id="numero" value="#{habitacionController.selected.numero}" title="#{bundle.CreateHabitacionTitle_numero}" />
                         <p:outputLabel value="#{bundle.CreateHabitacionLabel_descripcion}" for="descripcion" />
@@ -26,7 +24,7 @@
                         <p:selectOneMenu id="tipoHabitacionIdtipoHabitacion" value="#{habitacionController.selected.tipoHabitacionIdtipoHabitacion}" >
                             <f:selectItems value="#{tipoHabitacionController.itemsAvailableSelectOne}"
                                            var="tipoHabitacionIdtipoHabitacionItem"
-                                           itemValue="#{tipoHabitacionIdtipoHabitacionItem}"/>
+                                           itemValue="#{tipoHabitacionIdtipoHabitacionItem.tipo}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateHabitacionLabel_estadoHabitacionIdestadoHabitacion}" for="estadoHabitacionIdestadoHabitacion" />
                         <p:selectOneMenu id="estadoHabitacionIdestadoHabitacion" value="#{habitacionController.selected.estadoHabitacionIdestadoHabitacion}" >
